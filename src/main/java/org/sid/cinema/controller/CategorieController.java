@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.sid.cinema.model.Categorie;
 import org.sid.cinema.service.CategorieService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategorieController {
 
 	
-
+	@Autowired
 	private final CategorieService categorieService ;
 	
 	

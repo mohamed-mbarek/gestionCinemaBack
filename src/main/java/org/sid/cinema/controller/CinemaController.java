@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.sid.cinema.model.Cinema;
 import org.sid.cinema.service.CinemaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/cinemas")
 public class CinemaController {
-
+	@Autowired
 	private final CinemaService cinemaService ;
 	
 	public CinemaController ( CinemaService service) {

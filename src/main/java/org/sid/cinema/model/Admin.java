@@ -21,4 +21,9 @@ public class Admin {
 	private String password ;
 	private String roles ;
 	
+	public String copy(String image) {
+		String[] array=image.split("\\\\");
+		return (array[2]);
+	}
+	
 }

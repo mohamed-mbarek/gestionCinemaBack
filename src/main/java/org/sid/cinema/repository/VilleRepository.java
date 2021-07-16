@@ -11,3 +11,4 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface VilleRepository extends JpaRepository<Ville, Long> {
 	Optional<Ville>  findVilleById(Long id) ;
 }
+	

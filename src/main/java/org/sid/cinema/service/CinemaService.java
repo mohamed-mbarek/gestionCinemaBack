@@ -20,6 +20,9 @@ public class CinemaService {
 	}
 	
 	public Cinema addCinema(Cinema cinema) {
+		String aa=cinema.getImage();
+		String bb=cinema.copy(aa);
+		cinema.setImage(bb);
 		return cinemaRepository.save(cinema);
 	}
 	

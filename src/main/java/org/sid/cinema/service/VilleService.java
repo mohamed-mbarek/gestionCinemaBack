@@ -19,8 +19,12 @@ public class VilleService {
 	public VilleService(VilleRepository villeRepository) {
 		this.villeRepository = villeRepository;
 	}
-
+	
+	
 	public Ville addVille(Ville ville) {
+		String aa=ville.getImage();
+		String bb=ville.copy(aa);
+		ville.setImage(bb);
 		return villeRepository.save(ville);
 	}
 	

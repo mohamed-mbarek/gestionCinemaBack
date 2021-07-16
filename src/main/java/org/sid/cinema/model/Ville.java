@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.apache.el.parser.AstString;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -26,4 +28,9 @@ public class Ville  {
 	@JsonIgnore
 	private Collection<Cinema> cinemas ;
 	
+	
+	public String copy(String image) {
+		String[] array=image.split("\\\\");
+		return (array[2]);
+	}
 }

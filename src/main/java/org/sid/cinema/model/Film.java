@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +28,13 @@ public class Film {
 	private double duree ;
 	private String photo ;
 	@OneToMany ( mappedBy = "film")
+	@JsonIgnore
 	private Collection<ProjectionFilm> projectionFilms ;
 	@ManyToOne
 	private Categorie categorie ;
+	
+	public String copy(String image) {
+		String[] array=image.split("\\\\");
+		return (array[2]);
+	}
 }

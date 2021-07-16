@@ -3,6 +3,7 @@ package org.sid.cinema.model;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,9 +37,14 @@ public class Cinema implements Serializable {
 	private String description;
 	@Column(columnDefinition = "varchar(25) default 'cinema.jpg'")
 	private String image;
-	@OneToMany(mappedBy = "cinema")
+	@OneToMany(mappedBy = "cinema",cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private Collection<Salle> salles;
 	@ManyToOne
 	private Ville ville;
+	
+	public String copy(String image) {
+		String[] array=image.split("\\\\");
+		return (array[2]);
+	}
 }

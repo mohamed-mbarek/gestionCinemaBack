@@ -18,8 +18,11 @@ public class AdminService {
 		adminRepository=repository;
 	}
 	
-	public Admin addAdmin(Admin Admin) {
-		return adminRepository.save(Admin);
+	public Admin addAdmin(Admin admin) {
+		String aa=admin.getImage();
+		String bb=admin.copy(aa);
+		admin.setImage(bb);
+		return adminRepository.save(admin);
 	}
 	
 	public List<Admin> findAllAdmin(){
