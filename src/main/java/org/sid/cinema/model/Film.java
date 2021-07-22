@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,13 +27,18 @@ public class Film {
 	private String description;
 	private String realisateur ;
 	private Date dateSortie;
-	private double duree ;
+	@Temporal(TemporalType.TIME)
+    @JsonFormat(pattern = "hh:mm:ss")
+	private Date  duree ;
 	private String photo ;
 	@OneToMany ( mappedBy = "film")
 	@JsonIgnore
 	private Collection<ProjectionFilm> projectionFilms ;
 	@ManyToOne
 	private Categorie categorie ;
+	@OneToMany (mappedBy = "film")
+	@JsonIgnore
+	private Collection<Affiche> affiches ;
 	
 	public String copy(String image) {
 		String[] array=image.split("\\\\");

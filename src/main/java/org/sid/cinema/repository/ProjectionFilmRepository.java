@@ -8,4 +8,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 public interface ProjectionFilmRepository extends JpaRepository<ProjectionFilm, Long> {
 
+	ProjectionFilm findProjectionFilmById(Long id);
 }

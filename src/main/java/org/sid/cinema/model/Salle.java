@@ -25,7 +25,6 @@ public class Salle {
 	private String nom ;
 	private int nombrePlace ;
 	@ManyToOne
-	@JsonIgnore
 	private Cinema cinema;
 	@OneToMany (mappedBy = "salle")
 	@JsonIgnore

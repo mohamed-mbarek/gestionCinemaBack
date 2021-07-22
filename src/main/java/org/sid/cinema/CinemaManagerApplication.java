@@ -9,10 +9,17 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
+import java.util.TimeZone;
+
+import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class CinemaManagerApplication {
 
+	 @PostConstruct
+     void started() {
+       TimeZone.setDefault(TimeZone.getTimeZone("TimeZone"));
+     }
 	public static void main(String[] args) {
 		SpringApplication.run(CinemaManagerApplication.class, args);
 	}
