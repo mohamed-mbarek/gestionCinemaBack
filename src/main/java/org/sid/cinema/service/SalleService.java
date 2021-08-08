@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SalleService {
-	
-	private final SalleRepository salleRepository;
 	@Autowired
+	private final SalleRepository salleRepository;
+
 	public SalleService(SalleRepository repository) {
 		this.salleRepository=repository;
 	}

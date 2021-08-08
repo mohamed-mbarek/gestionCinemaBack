@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectionFilmService {
-
-	private final ProjectionFilmRepository projectionFilmRepository;
 	@Autowired
+	private final ProjectionFilmRepository projectionFilmRepository;
+
 	public ProjectionFilmService (ProjectionFilmRepository projectionFilmRepository) {
 		this.projectionFilmRepository=projectionFilmRepository;
 	}
