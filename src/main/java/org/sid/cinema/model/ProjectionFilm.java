@@ -28,9 +28,13 @@ public class ProjectionFilm {
 	 private Salle salle; 
 	 @ManyToOne 
 	 private Film film ;
-	 @OneToMany (mappedBy = "projectionFilm")
-	 @JsonIgnore
-	 private Collection<Ticket>tickets;
 	 @ManyToOne
 	 private  Seance seance ;
+	 @OneToMany (mappedBy = "projection")
+	 @JsonIgnore
+	 private Collection<Ticket>tickets;
+	 @OneToMany( mappedBy="projectionFilm")
+	 @JsonIgnore
+	 private Collection<Commentaire>commentaires;
+
 }

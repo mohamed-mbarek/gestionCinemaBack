@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ReclamationRepository  extends JpaRepository<Reclamation, Long>{
 
-	@Query("select count(*) from Reclamation   where vu='false'")
+	@Query("select count(id) from Reclamation r   where vu='false'")
 	int findRecNonVu ();
 
 }

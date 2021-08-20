@@ -1,38 +1,41 @@
 package org.sid.cinema.model;
 
+
 import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor 
-public class Ticket {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class Commentaire {
+	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ;
-	private int nombre ;
-	@Column(unique = true)
-	private String codePayement ;
-	@Column(name="dateReservation", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(name="date", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date date;
-	@ManyToOne
-	private ProjectionFilm projection ;
-	@ManyToOne
-	private Admin admin;
+	@Lob
+	private String commentaire ;
 	@Column(name = "vu", columnDefinition = "boolean default false")
 	private boolean vu=false ;
-
+	@ManyToOne 
+	private ProjectionFilm projectionFilm ;
+	@ManyToOne 
+	private Admin admin;
 }

@@ -37,5 +37,9 @@ public class ProjectionFilmService {
 		return  projectionFilmRepository.findProjectionFilmById(id);
 	}
 	
+
+	public List<ProjectionFilm> Find(Long id) {
+		return  projectionFilmRepository.findFilmByCinema(id);
+	}
 	
 }

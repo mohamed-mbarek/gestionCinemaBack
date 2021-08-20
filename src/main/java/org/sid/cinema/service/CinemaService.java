@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.sid.cinema.exception.VilleNotFoundException;
 import org.sid.cinema.model.Cinema;
+import org.sid.cinema.model.Salle;
 import org.sid.cinema.model.Ville;
 import org.sid.cinema.repository.CinemaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,7 @@ public class CinemaService {
 		return  cinemaRepository.findById(id).orElseThrow(() -> new VilleNotFoundException(" aucun cinema trouver 0 ") );
 	}
 	
-	
+	public List<Cinema> findAllCinemaVille(Long  id) {
+		return  cinemaRepository.findByCinema(id);
+	}
 }

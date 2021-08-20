@@ -23,6 +23,4 @@ public class Place {
 	private int numeroPlace;
 	@ManyToOne
 	private Salle salle;
-	@OneToMany (mappedBy = "place")
-	private Collection<Ticket>tickets ;
 }

@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import org.sid.cinema.model.Cinema;
+import org.sid.cinema.model.Salle;
 import org.sid.cinema.service.CinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,6 +57,11 @@ public class CinemaController {
 	        return new ResponseEntity<>(HttpStatus.OK);
 	    }
 	 
-	 
+	    @GetMapping("/getCinemas/{id}")
+	    public ResponseEntity<List<Cinema>> getAllCinemasByIdVille (@PathVariable("id") Long id) {
+	        List<Cinema> cinemas = cinemaService.findAllCinemaVille(id);
+	        return new ResponseEntity<>(cinemas, HttpStatus.OK);
+	    }
+	  
 	
 }	

@@ -55,6 +55,12 @@ public class ProjectionFilmController {
 	        filmService.deleteProjectionFilm(id);
 	        return new ResponseEntity<>(HttpStatus.OK);
 	    }
-	 
+	    
+		 @GetMapping("/ListFilm/{id}")
+		    public ResponseEntity<List<ProjectionFilm>> getFilms (@PathVariable("id") Long id) {
+			 List<ProjectionFilm> projectionFilm = filmService.Find(id);
+		        return new ResponseEntity<>(projectionFilm, HttpStatus.OK);
+		    }
+
 
 }

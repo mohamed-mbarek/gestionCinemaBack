@@ -27,6 +27,7 @@ public class Film {
 	private String description;
 	private String realisateur ;
 	private Date dateSortie;
+	private String annonce;
 	@Temporal(TemporalType.TIME)
     @JsonFormat(pattern = "hh:mm:ss")
 	private Date  duree ;
@@ -39,7 +40,7 @@ public class Film {
 	@OneToMany (mappedBy = "film")
 	@JsonIgnore
 	private Collection<Affiche> affiches ;
-	
+	 
 	public String copy(String image) {
 		String[] array=image.split("\\\\");
 		return (array[2]);

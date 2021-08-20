@@ -21,7 +21,7 @@ public class FilmSerrvice {
 		String aa=Film.getPhoto();
 		String bb=Film.copy(aa);
 		Film.setPhoto(bb);
-	
+		Film.setAnnonce(Film.copy(Film.getAnnonce()));
 		return filmRepository.save(Film);
 	}
 	
