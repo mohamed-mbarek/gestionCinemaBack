@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -35,7 +38,9 @@ public class Commentaire {
 	@Column(name = "vu", columnDefinition = "boolean default false")
 	private boolean vu=false ;
 	@ManyToOne 
+    @OnDelete(action = OnDeleteAction.CASCADE)
 	private ProjectionFilm projectionFilm ;
 	@ManyToOne 
+    @OnDelete(action = OnDeleteAction.CASCADE)
 	private Admin admin;
 }

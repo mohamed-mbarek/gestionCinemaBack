@@ -31,8 +31,14 @@ public class AfficheService {
 		afficheRepository.deleteById(id);
 	}
 	
-	public Affiche updateAffiche(Affiche Affiche) {
-		return afficheRepository.save(Affiche);
+	public Affiche updateAffiche(Affiche affiche) {
+	 int x=affiche.getImage().indexOf("\\");
+	 if(x>0) {
+			String aa=affiche.getImage();
+			String bb=affiche.copy(aa);
+			affiche.setImage(bb);
+	 }
+		return afficheRepository.save(affiche);
 	}
 	
 	public Affiche findAfficheById(Long id) {

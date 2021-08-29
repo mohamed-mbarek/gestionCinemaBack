@@ -36,6 +36,12 @@ public class CinemaService {
 	}
 	
 	public Cinema updateCinema(Cinema cinema) {
+		 int x=cinema.getImage().indexOf("\\");
+		 if(x>0) {
+				String aa=cinema.getImage();
+				String bb=cinema.copy(aa);
+				cinema.setImage(bb);
+		 }
 		return cinemaRepository.save(cinema);
 	}
 	

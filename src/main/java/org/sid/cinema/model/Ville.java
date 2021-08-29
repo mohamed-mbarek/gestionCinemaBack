@@ -3,6 +3,7 @@ package org.sid.cinema.model;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class Ville  {
 	private String nom ;
 	private Long codePostal ;
 	private String image ;
-	@OneToMany (mappedBy = "ville")
+	@OneToMany (mappedBy = "ville" ,cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private Collection<Cinema> cinemas ;
 	

@@ -1,7 +1,8 @@
 package org.sid.cinema.service;
 
 import java.util.List;
-import org.sid.cinema.exception.CustomerResourceException;
+
+import org.sid.cinema.exception.ApiRequestException;
 import org.sid.cinema.exception.VilleNotFoundException;
 import org.sid.cinema.model.ProjectionFilm;
 import org.sid.cinema.model.Reclamation;
@@ -24,8 +25,9 @@ public class TicketService {
 	}
 	
 	public Ticket addTicket(Ticket ticket) {
+		
 		return repository.save(ticket);
-	
+
 	}
 	
 	public List<Ticket> findAllTickets(){

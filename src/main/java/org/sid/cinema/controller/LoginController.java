@@ -3,6 +3,7 @@ package org.sid.cinema.controller;
 import java.text.ParseException;
 import java.util.List;
 
+import org.sid.cinema.exception.ApiRequestException;
 import org.sid.cinema.model.Admin;import org.sid.cinema.repository.AdminRepository;
 import org.sid.cinema.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,15 +43,20 @@ public class LoginController {
 	 
 	 @PostMapping("/add")
 	    public ResponseEntity<Admin> addadmin(@RequestBody Admin admin) {
-	        Admin newadmin = adminService.addAdmin(admin);
+	     try {
+		 	Admin newadmin = adminService.addAdmin(admin);
 	        return new ResponseEntity<>(newadmin, HttpStatus.CREATED);
-	    }
+	     }catch (Exception e) {
+				throw new ApiRequestException("Email est deja existe dans la base .Essayer avec un autre code !");	// TODO: handle exception
+			}
+}
 	 
 	 @PutMapping("/update")
 	    public ResponseEntity<Admin> updateadmin(@RequestBody Admin admin) throws ParseException {
-	    	Admin updateadmin = adminService.updateAdmin(admin);
+	     Admin updateadmin = adminService.updateAdmin(admin);
 	        return new ResponseEntity<>(updateadmin, HttpStatus.OK);
-	    }
+	   
+	 }
 
 	    @DeleteMapping("/delete/{id}")
 	    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {

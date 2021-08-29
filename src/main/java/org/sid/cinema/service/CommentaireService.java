@@ -29,6 +29,11 @@ public class CommentaireService {
 	public void deleteCommentaire(Long id ) {
 		commentaireRepository.deleteById(id);
 	}
+	public Commentaire updateCommentaire(Commentaire commentaire) {
+		return commentaireRepository.save(commentaire);
+	}
+	
+
 	public Commentaire findCommentaireById(Long id) {
 		return commentaireRepository.findCommentaireById(id);
 	}

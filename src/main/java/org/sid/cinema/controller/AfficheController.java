@@ -3,6 +3,7 @@ package org.sid.cinema.controller;
 import java.text.ParseException;
 import java.util.List;
 
+import org.sid.cinema.exception.ApiRequestException;
 import org.sid.cinema.model.Affiche;
 import org.sid.cinema.service.AfficheService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,11 @@ public class AfficheController {
 
 	 @GetMapping("/all")
 	    public ResponseEntity<List<Affiche>> getAllAffiches () {
-	        List<Affiche> Affiches = afficheService.findAllAffiche();
+	   List<Affiche> Affiches = afficheService.findAllAffiche();
 	        return new ResponseEntity<>(Affiches, HttpStatus.OK);
-	    }
+	    
+	 }
+	 
 	 @GetMapping("/find/{id}")
 	    public ResponseEntity<Affiche> getAfficheById (@PathVariable("id") Long id) {
 	        Affiche Affiche = afficheService.findAfficheById(id);

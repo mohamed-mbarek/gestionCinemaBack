@@ -2,6 +2,8 @@ package org.sid.cinema.model;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +24,14 @@ public class Admin {
 	private String nom ;
 	private String prenom ;
 	private String image;
+	@Column(unique = true)
 	private String email;
 	private String password ;
 	private String roles ;
 	@OneToMany (mappedBy = "admin")
 	@JsonIgnore
 	private Collection<Ticket> tickets ;
-	@OneToMany (mappedBy = "admin")
+	@OneToMany (mappedBy = "admin",cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private Collection<Commentaire> commentaires ;
 	

@@ -47,7 +47,7 @@ public class FilmController {
 	    }
 	 
 	 @PutMapping("/update")
-	    public ResponseEntity<Film> updateFilm(@RequestBody Film Film) throws ParseException {
+	    public ResponseEntity<Film> updateFilm(@RequestBody Film Film){
 	    	Film updateFilm = filmService.updateFilm(Film);
 	        return new ResponseEntity<>(updateFilm, HttpStatus.OK);
 	    }

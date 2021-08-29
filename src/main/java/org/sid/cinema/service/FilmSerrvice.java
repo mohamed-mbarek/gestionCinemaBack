@@ -34,6 +34,18 @@ public class FilmSerrvice {
 	}
 	
 	public Film updateFilm(Film Film) {
+		 int x=Film.getPhoto().indexOf("\\");
+		 if(x>0) {
+				String aa=Film.getPhoto();
+				String bb=Film.copy(aa);
+				Film.setPhoto(bb);
+		 }
+		 int y=Film.getAnnonce().indexOf("\\");
+		 if(y>0) {
+				String aa=Film.getAnnonce();
+				String bb=Film.copy(aa);
+				Film.setAnnonce(bb);
+		 }
 		return filmRepository.save(Film);
 	}
 	

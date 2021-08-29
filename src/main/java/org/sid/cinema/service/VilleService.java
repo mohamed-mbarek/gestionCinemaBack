@@ -19,30 +19,36 @@ public class VilleService {
 	public VilleService(VilleRepository villeRepository) {
 		this.villeRepository = villeRepository;
 	}
-	
-	
+
 	public Ville addVille(Ville ville) {
-		String aa=ville.getImage();
-		String bb=ville.copy(aa);
+		String aa = ville.getImage();
+		String bb = ville.copy(aa);
 		ville.setImage(bb);
 		return villeRepository.save(ville);
 	}
-	
-	public List<Ville> findAllVille(){
+
+	public List<Ville> findAllVille() {
 		return villeRepository.findAll();
 	}
-	
-	public void deleteVille(Long id ) {
+
+	public void deleteVille(Long id) {
 		villeRepository.deleteById(id);
 	}
-	
+
 	public Ville updateVille(Ville ville) {
+		int x = ville.getImage().indexOf("\\");
+		if (x > 0) {
+			String aa = ville.getImage();
+			String bb = ville.copy(aa);
+			ville.setImage(bb);
+
+		}
 		return villeRepository.save(ville);
 	}
-	
+
 	public Ville findVilleById(Long id) {
-		return  villeRepository.findVilleById(id).orElseThrow(() -> new VilleNotFoundException("Ville by id ") );
+		return villeRepository.findVilleById(id)
+				.orElseThrow(() -> new VilleNotFoundException("aucune ville trouver ! "));
 	}
-	
-	
+
 }

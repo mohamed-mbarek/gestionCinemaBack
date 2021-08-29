@@ -2,6 +2,7 @@ package org.sid.cinema.model;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Categorie {
 	private Long id ; 
 	@Column(length = 50)
 	private String nom ;
-	@OneToMany (mappedBy = "categorie")
+	@OneToMany (mappedBy = "categorie",cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private Collection<Film> films ;
 }

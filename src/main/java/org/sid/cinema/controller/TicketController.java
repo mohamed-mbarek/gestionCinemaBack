@@ -3,7 +3,7 @@ package org.sid.cinema.controller;
 import java.text.ParseException;
 import java.util.List;
 
-import org.sid.cinema.exception.CustomerResourceException;
+import org.sid.cinema.exception.ApiRequestException;
 import org.sid.cinema.model.ProjectionFilm;
 import org.sid.cinema.model.Reclamation;
 import org.sid.cinema.model.Ticket;
@@ -41,12 +41,18 @@ public class TicketController {
 	public ResponseEntity<Ticket> getTicketById(@PathVariable("id") Long id) {
 		Ticket Ticket = service.findTicketById(id);
 		return new ResponseEntity<>(Ticket, HttpStatus.OK);
+		
+
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<Ticket> addTicket(@RequestBody Ticket Ticket) {
+	public ResponseEntity<Ticket> addTicket(@RequestBody Ticket Ticket) {	
+		try {
 		Ticket newTicket = service.addTicket(Ticket);
 		return new ResponseEntity<>(newTicket, HttpStatus.CREATED);
+		}catch (Exception e) {
+			throw new ApiRequestException("code paiement est deja   existe dans la base .Essayer avec un autre code !");	// TODO: handle exception
+		}
 
 	}
 

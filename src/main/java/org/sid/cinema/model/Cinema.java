@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,6 +43,7 @@ public class Cinema implements Serializable {
 	@JsonIgnore
 	private Collection<Salle> salles;
 	@ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
 	private Ville ville;
 	
 	public String copy(String image) {

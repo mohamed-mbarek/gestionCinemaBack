@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -29,8 +32,10 @@ public class Ticket {
 	@Column(name="dateReservation", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date date;
 	@ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
 	private ProjectionFilm projection ;
 	@ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
 	private Admin admin;
 	@Column(name = "vu", columnDefinition = "boolean default false")
 	private boolean vu=false ;

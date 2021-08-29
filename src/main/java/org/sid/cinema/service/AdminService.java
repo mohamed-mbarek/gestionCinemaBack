@@ -34,7 +34,15 @@ public class AdminService {
 	}
 	
 	public Admin updateAdmin(Admin Admin) {
-		return adminRepository.save(Admin);
+		 int x=Admin.getImage().indexOf("\\");
+		 if(x>0) {
+				String aa=Admin.getImage();
+				String bb=Admin.copy(aa);
+				Admin.setImage(bb);
+		 }
+	
+			return adminRepository.save(Admin);
+		
 	}
 	
 	public Admin findAdminById(Long id) {
